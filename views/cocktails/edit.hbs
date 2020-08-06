@@ -1,0 +1,81 @@
+<div class="w-full max-w-xs mt-8 mx-auto text-orange-light">
+  <h3 class="text-2xl font-black mb-4">Cocktail erstellen</h3>
+  <form method="POST" action="/cocktails/{{_id}}?_method=PUT" enctype="multipart/form-data" onsubmit="return validateForm(event)" 
+    class="text-gray-800 dark-mode:text-gray-600 bg-white dark-mode:bg-gray-darkest shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-4">
+      {{> _form_label for="cocktailImage" value="Bild"}}
+      <div class="mb-4">
+        <img id="image" class="w-full rounded mb-4" src="data:image/png;base64,{{base64 image.data}}" alt="Cocktail">
+        <button
+          type="button" 
+          class="cursor-pointer bg-pink-dark hover:bg-orange-light text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+          onclick="$('#cocktailImage').click()">
+          Bild ändern
+        </button>
+        <input type="file" id="cocktailImage" name="image" accept=".jpg,.png" class="hidden" onchange="fileSelected()">
+        <span class="block text-pink-dark text-xs"></span>
+      </div>
+      <div class="mb-4">
+        {{> _form_label for="cocktailName" value="Name"}}
+        <input
+          class="shadow appearance-none rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="cocktailName" type="text" name="name" placeholder="Cocktail benennen" autocomplete="off" value="{{name}}">
+          <span class="block text-pink-dark text-xs"></span>
+      </div>
+      <div class="mb-4">
+        {{> _form_label for="cocktailIngredient" value="Zutaten"}}
+        <div class="flex flex-col">
+          {{#each ingredients}}
+          <input
+            class="shadow inline-block appearance-none rounded w-full mb-2 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            name="ingredients" type="text" placeholder="z. B. Vodka" autocomplete="off" value="{{this}}">
+          <span class="block text-pink-dark text-xs"></span>
+          {{/each}}
+          <div class="flex flex-row justify-center">
+            <button type="button" onclick="addIngredientField()" 
+              class="flex-grow py-2 px-3 rounded-l bg-pink-dark text-gray-200 leading-tight font-bold uppercase">
+              +
+            </button>
+            <button type="button" onclick="deleteIngredientField()" 
+              class="flex-grow py-2 px-3 rounded-r bg-pink-dark text-gray-200 leading-tight font-bold uppercase">
+              -
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        {{> _form_label for="cocktailRecipe" value="Zubereitung"}}
+        <textarea
+          class="shadow appearance-none rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="cocktailRecipe" name="recipe" rows="3" placeholder="Beschreibe die Zubereitung"/>{{recipe}}</textarea>
+        <span class="block text-pink-dark text-xs"></span>
+      </div>
+      <div class="block mb-4">
+        {{> _form_label for="cocktailStatus" value="Status"}}
+        <div class="w-full relative inline-flex">
+          <i class="fas fa-chevron-down absolute top-0 right-0 m-3 pointer-events-none"></i>
+          <select
+            class="shadow appearance-none rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            name="status" id="cocktailStatus">
+            {{#select status}}
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            {{/select}}
+          </select>
+        </div>
+      </div>
+      <div class="mb-4 flex flex-row justify-between">
+        <button
+          class="bg-pink-dark hover:bg-orange-light text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit">
+          Erstellen
+        </button>
+
+        <a class="bg-pink-dark hover:bg-orange-light text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          href="/dashboard">Abbrechen</a>
+
+      </div>
+  </form>
+</div>
+
+<script src="/scripts/form.js"></script>

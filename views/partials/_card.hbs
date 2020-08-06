@@ -1,0 +1,56 @@
+<div class="bg-gray-lightest dark-mode:bg-gray-darkest max-w-xs md:max-w-sm rounded overflow-hidden shadow-lg m-4">
+  <a href="/cocktails/cocktail/{{_id}}">
+    <img class="w-full" src="data:image/png;base64,{{base64 image.data}}" alt="Cocktail">
+  </a>
+  <div class="px-6 py-4">
+    <div class="{{#if dashboard}} text-center {{else}} text-left {{/if}} text-gray-900 dark-mode:text-pink-light font-bold text-xl mb-2">
+      <a href="/cocktails/cocktail/{{_id}}">{{name}}</a>
+      {{#if dashboard}}
+        <form class="flex flex-row justify-evenly items-center pt-2" action="/cocktails/{{_id}}?_method=DELETE" method="POST" onsubmit="return confirm('Cocktail wird gelöscht.');">
+          <a href="/cocktails/edit/{{_id}}">  
+            <div class="bg-gray-200 dark-mode:bg-pink-lightest text-gray-800 dark-mode:text-gray-dark rounded-full">
+              <p class="px-3 py-1 font-bold text-xs">Bearbeiten <i class="fas fa-edit"></i></p>
+            </div>
+          </a>
+          <button type="submit">
+            <div class="bg-gray-200 dark-mode:bg-pink-lightest text-gray-800 dark-mode:text-gray-dark rounded-full">
+              <p class="px-3 py-1 font-bold text-xs">Löschen <i class="fas fa-trash"></i></p>
+            </div>
+          </button>
+        </form>
+      {{/if}}
+    </div>
+    {{#unless dashboard}}
+    <p class="text-gray-700 dark-mode:text-pink-lightest text-base">
+      {{{replaceBreaks (truncate recipe 150 id)}}} 
+    </p>
+      <div class="flex h-12 text-sm pt-2">
+        <a href="/cocktails/cocktail/{{_id}}">
+          <div class="bg-gray-200 dark-mode:bg-pink-lightest text-gray-800 dark-mode:text-gray-dark rounded-full">
+            <p class="px-2 py-1 font-bold">weiter lesen</p>
+          </div>
+        </a>
+      </div>
+    {{/unless}}
+  </div>
+
+  {{#unless dashboard}}
+  <div class="flex flex-start flex-wrap items-evenly px-6">
+    {{#each ingredients}}
+    <span class="inline-block bg-gray-200 dark-mode:bg-pink-dark rounded-full px-2 py-1 mb-2 text-sm font-semibold text-gray-700 dark-mode:text-gray-lightest mr-1">
+      {{this}}
+    </span>
+    {{/each}}
+  </div>
+  <div class="flex justify-between h-12 items-center text-xs px-6 mt-2">
+    <p class=" text-gray-800 dark-mode:text-pink-lightest">{{formatDate createdAt "LL"}}</p>
+      <div class="flex flex-row items-center text-gray-800 dark-mode:text-pink-lightest">
+        <p class="mr-1">von </p>
+        <a href="/cocktails/user/{{user._id}}" class="mr-1 font-bold">
+          {{user.displayName}}
+        </a>
+        <img src="{{user.image}}" class="rounded-full h-6">
+      </div>
+  </div>
+  {{/unless}}
+</div>
