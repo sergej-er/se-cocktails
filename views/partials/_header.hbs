@@ -1,10 +1,10 @@
 <header>
-  <div class="w-full text-gray-700 bg-gray-lightest dark-mode:bg-gray-darkest dark-mode:text-pink-lightest dark-mode:bg-gray-800">
+  <div class="w-full bg-gray-darkest text-pink-lightest">
     <div x-data="{ open: false }"
       class="flex flex-col px-4 mx-4 md:items-center justify-between md:flex-row md:px-6 lg:px-8">
       <div class="p-4 flex flex-row items-center justify-between">
         <a href="/cocktails"
-          class="text-xl font-black tracking-widest text-gray-darkest rounded-lg dark-mode:text-pink-light focus:outline-none focus:shadow-outline"><h1>SE Cocktails</h1></a>
+          class="text-xl font-black tracking-widest rounded-lg text-pink-light focus:outline-none focus:shadow-outline"><h1>SE Cocktails</h1></a>
         <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
             <path x-show="!open" fill-rule="evenodd"
@@ -18,13 +18,13 @@
       </div>
       <nav :class="{'flex': open, 'hidden': !open}"
         class="flex-col flex-grow items-center pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
-        <a class="px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent dark-mode:text-pink-lightest dark-mode:hover:bg-gray-dark dark-mode:focus:bg-gray-dark dark-mode:focus:text-pink-light dark-mode:hover:text-pink-light md:mt-0 md:ml-4 hover:bg-gray-light hover:text-gray-darkest focus:bg-gray-light focus:text-gray-darkest focus:outline-none focus:shadow-outline"
+        <a class="px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent text-pink-lightest hover:bg-gray-dark hover:text-pink-light focus:bg-gray-dark focus:text-pink-light  md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline"
           href="/cocktails">Alle Cocktails</a>
-        <a class="px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent dark-mode:text-pink-lightest dark-mode:hover:bg-gray-dark dark-mode:focus:bg-gray-dark dark-mode:focus:text-pink-light dark-mode:hover:text-pink-light md:mt-0 md:ml-4 hover:bg-gray-light hover:text-gray-darkest focus:bg-gray-light focus:text-gray-darkest focus:outline-none focus:shadow-outline"
+        <a class="px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent text-pink-lightest hover:bg-gray-dark hover:text-pink-light focus:bg-gray-dark focus:text-pink-light  md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline"
           href="/dashboard">Meine Cocktails</a>
         <div @click.away="open = false" class="relative" x-data="{ open: false }">
           <button @click="open = !open"
-            class="flex flex-row items-center w-full px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent dark-mode:text-pink-lightest dark-mode:hover:bg-gray-dark dark-mode:focus:bg-gray-dark dark-mode:focus:text-pink-light dark-mode:hover:text-pink-light md:mt-0 md:ml-4 hover:bg-gray-light hover:text-gray-darkest focus:bg-gray-light focus:text-gray-darkest focus:outline-none focus:shadow-outline">
+            class="flex flex-row items-center w-full px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent text-pink-lightest hover:bg-gray-dark hover:text-pink-light focus:bg-gray-dark focus:text-pink-light md:mt-0 md:ml-4 focus:outline-none focus:shadow-outline">
             <img src={{image}} class="inline h-8 w-8 rounded-full mr-2"><span>{{displayName}}</span>
             <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
               class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -38,13 +38,13 @@
             x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-            <div class="px-2 py-2 bg-gray-lightest rounded-md shadow dark-mode:bg-gray-darkest">
-              <a class="block px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent dark-mode:text-pink-lightest dark-mode:hover:bg-gray-dark dark-mode:focus:bg-gray-dark dark-mode:focus:text-pink-light dark-mode:hover:text-pink-light md:mt-0 hover:bg-gray-light hover:text-gray-darkest focus:bg-gray-light focus:text-gray-darkest focus:outline-none focus:shadow-outline"
+            class="absolute right-0 mt-2 origin-top-right rounded-md shadow-lg md:w-48 w-64">
+            <div class="px-2 py-2 rounded-md shadow bg-gray-darkest">
+              <a class="block px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent text-pink-lightest hover:bg-gray-dark hover:text-pink-light focus:bg-gray-dark focus:text-pink-light md:mt-0 focus:outline-none focus:shadow-outline"
                 href="/cocktails/add"><i class="fas fa-plus"></i> Cocktail erstellen</a>
-              <a class="block px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent dark-mode:text-pink-lightest dark-mode:hover:bg-gray-dark dark-mode:focus:bg-gray-dark dark-mode:focus:text-pink-light dark-mode:hover:text-pink-light md:mt-0 hover:bg-gray-light hover:text-gray-darkest focus:bg-gray-light focus:text-gray-darkest focus:outline-none focus:shadow-outline"
+              <a class="block px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent text-pink-lightest hover:bg-gray-dark hover:text-pink-light focus:bg-gray-dark focus:text-pink-light md:mt-0 focus:outline-none focus:shadow-outline"
                 href="#"><i class="fas fa-moon"></i> Theme (soon)</a>
-              <a class="block px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent dark-mode:text-pink-lightest dark-mode:hover:bg-gray-dark dark-mode:focus:bg-gray-dark dark-mode:focus:text-pink-light dark-mode:hover:text-pink-light md:mt-0 hover:bg-gray-light hover:text-gray-darkest focus:bg-gray-light focus:text-gray-darkest focus:outline-none focus:shadow-outline"
+              <a class="block px-4 py-2 mt-2 rounded-lg text-sm font-bold bg-transparent text-pink-lightest hover:bg-gray-dark hover:text-pink-light focus:bg-gray-dark focus:text-pink-light md:mt-0 focus:outline-none focus:shadow-outline"
                 href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
           </div>
