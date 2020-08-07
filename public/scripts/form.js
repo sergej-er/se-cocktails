@@ -1,5 +1,5 @@
 function validateForm(e) {
-  let cocktailImage = $("#image");
+  let cocktailImage = $("#cocktailImage");
   let cocktailName = $("#cocktailName");
   let cocktailIngredients = $("input[name='ingredients']");
   let cocktailRecipe = $("#cocktailRecipe");
@@ -22,12 +22,8 @@ function validateForm(e) {
 }
 
 function checkRequired(input, e) {
-  inputValue = input.val()
-    ? input.val()
-    : input.html()
-    ? input.html()
-    : input.prop("src");
-  if (inputValue.length === 0 || inputValue.trim() === "") {
+  inputValue = input.val() ? input.val() : input.html();
+  if (!inputValue || inputValue.length === 0 || inputValue.trim() === "") {
     showError(input, "Darf nicht leer sein.");
     e.preventDefault();
   } else {
@@ -48,7 +44,9 @@ function showSuccess(input) {
 function fileSelected() {
   const file = $("#cocktailImage")[0].files[0];
   if (file) {
-    $("#image").attr("src", URL.createObjectURL(file));
+    const url = URL.createObjectURL(file);
+    $("#image").attr("src", url);
+    $("#cocktailImage").attr("value", url);
   }
 }
 
