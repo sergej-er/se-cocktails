@@ -1,6 +1,6 @@
 # Cocktails
 
-[Deployed to Heroku](https://se-cocktails.herokuapp.com/) - In German (for now...)
+[Deployed to Heroku](https://se-cocktails.herokuapp.com/) - In German 
 
 A website for creating and sharing cocktails.
 
